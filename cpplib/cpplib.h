@@ -1,0 +1,1 @@
+void get_symbol(char& s);
