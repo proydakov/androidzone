@@ -1,0 +1,10 @@
+bin/
+gen/
+obj/
+libs/
+build*/
+.settings/
+.classpath
+.project
+.cproject
+project.properties
