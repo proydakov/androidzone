@@ -21,7 +21,6 @@
  */
 
 #include <jni.h>
-#include <errno.h>
 
 #include <android/log.h>
 #include <android_native_app_glue.h>
@@ -30,7 +29,6 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
 #define APP_STRING_NAME "boost-uuid"
@@ -67,7 +65,7 @@ void android_main(struct android_app* state)
 {
     app_dummy();
 
-    LOGW( "boost-uuid : entered main" );
+    LOGW( "entered main" );
 
     boost::uuids::random_generator random_gen;
 
@@ -86,12 +84,12 @@ void android_main(struct android_app* state)
             }
 
             if (state->destroyRequested != 0) {
-                LOGW( "boost-uuid : exited main" );
+                LOGW( "exited main" );
                 return;
             }
 
             std::string uuid = boost::uuids::to_string(random_gen());
-            LOGI("boost-uuid : %s", uuid.c_str());
+            LOGI("UUID : %s", uuid.c_str());
         }
     }
 }

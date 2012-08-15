@@ -21,14 +21,12 @@
  */
 
 #include <jni.h>
-#include <errno.h>
 
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
 #include <boost/thread.hpp>
 
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
 #define APP_STRING_NAME "boost-thread"
@@ -43,7 +41,7 @@ static const int NUMBER_OF_THREADS = 7;
 void thread_fun(int id)
 {
     for(int i = 0; i < ITERATION; ++i) {
-        LOGI("boost-thread id %d : %d", id, i);
+        LOGI("thread id %d : %d", id, i);
         boost::this_thread::sleep(boost::posix_time::milliseconds(TIMEOUT));
     }
 }
@@ -79,7 +77,7 @@ void android_main(struct android_app* state)
 
     app_dummy();
 
-    LOGW( "boost-thread : entered main" );
+    LOGW( "entered main" );
 
     state->userData = &group;
     state->onAppCmd = engine_handle_cmd;
@@ -102,7 +100,7 @@ void android_main(struct android_app* state)
             }
 
             if (state->destroyRequested != 0) {
-                LOGW( "boost-thread : exited main" );
+                LOGW( "exited main" );
                 return;
             }
         }

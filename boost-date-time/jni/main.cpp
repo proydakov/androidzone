@@ -21,14 +21,12 @@
  */
 
 #include <jni.h>
-#include <errno.h>
 
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
 
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
 #define APP_STRING_NAME "boost-date-time"
@@ -65,7 +63,7 @@ void android_main(struct android_app* state)
 {
     app_dummy();
 
-    LOGW( "boost-date-time : entered main" );
+    LOGW( "entered main" );
 
     state->userData = NULL;
     state->onAppCmd = engine_handle_cmd;
@@ -82,12 +80,12 @@ void android_main(struct android_app* state)
             }
 
             if (state->destroyRequested != 0) {
-                LOGW( "boost-date-time : exited main" );
+                LOGW( "exited main" );
                 return;
             }
 
-            std::string uuid = boost::posix_time::to_simple_string(boost::posix_time::microsec_clock::local_time());
-            LOGI("boost-date-time : %s", uuid.c_str());
+            std::string time = boost::posix_time::to_simple_string(boost::posix_time::microsec_clock::local_time());
+            LOGI("DATA & TIME : %s", time.c_str());
         }
     }
 }
