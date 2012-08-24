@@ -23,7 +23,7 @@
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
-#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/date_time.hpp>
 
 //-----------------------------------------------------------------------------
 
