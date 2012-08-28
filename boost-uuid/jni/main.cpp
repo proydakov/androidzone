@@ -34,12 +34,12 @@
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, APP_STRING_NAME, __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, APP_STRING_NAME, __VA_ARGS__))
 
-static int32_t engine_handle_input(struct android_app* app,  AInputEvent* event)
+static int32_t engine_handle_input(android_app* app,  AInputEvent* event)
 {
     return 0;
 }
 
-static void engine_handle_cmd(struct android_app* app, int32_t cmd)
+static void engine_handle_cmd(android_app* app, int32_t cmd)
 {
     switch (cmd) {
         case APP_CMD_SAVE_STATE:
@@ -59,7 +59,7 @@ static void engine_handle_cmd(struct android_app* app, int32_t cmd)
     }
 }
 
-void android_main(struct android_app* state)
+void android_main(android_app* state)
 {
     app_dummy();
 
@@ -74,7 +74,7 @@ void android_main(struct android_app* state)
     while (true) {
         int ident;
         int events;
-        struct android_poll_source* source;
+        android_poll_source* source;
 
         while ((ident = ALooper_pollAll(-1, NULL, &events, (void**) &source)) >= 0) {
             if (source != NULL) {
